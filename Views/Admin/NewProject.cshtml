@@ -1,0 +1,57 @@
+@{
+  ViewData["Title"] ="New Project".ToUpper();
+  User userNewProject = ViewBag.user;
+}
+
+<section class="section-new-project mt-5">
+  <div class="container border shadow mb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 p-2 border-right">
+        <partial name="Sidebar" model="@userNewProject"/>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3">
+        <a class="text-secondary float-right" asp-controller="Admin" asp-action="Dashboard">Back</a>
+        <h1 class="text-primary" >@ViewData["Title"]</h1>
+        <hr class="my-4 bg-white">
+        @model ProjectViewModel
+        <form enctype="multipart/form-data" class="p-3 border border-secondary text-muted" asp-controller="Admin" asp-action="CreateProject" method="POST">
+          <span class="text-danger" asp-validation-for="ProjectName"></span>
+          <div class="form-group">
+            <label asp-for="ProjectName">Project Name</label>
+            <input asp-for="ProjectName" type="text" class="form-control" id="ProjectName" name="ProjectName" placeholder="Enter project name">
+          </div>
+          <span class="text-danger" asp-validation-for="ProjectImage"></span>
+          <div class="form-group">
+            <label asp-for="ProjectImage">Project Image</label>
+            <input asp-for="ProjectImage" type="file" class="form-control" id="ProjectImage" name="ProjectImage">
+          </div>
+          <span class="text-danger" asp-validation-for="ProjectDescription"></span>
+          <div class="form-group">
+            <label for="ProjectDescription">Project Description</label>
+            <textarea asp-for="ProjectDescription" type="text" class="form-control" id="ProjectDescription" style="height: 250px;" name="ProjectDescription" placeholder="Enter description"></textarea>
+          </div>
+          <span class="text-danger" asp-validation-for="ProjectLink"></span>
+          <div class="form-group">
+            <label asp-for="ProjectLink">Project Link</label>
+            <input asp-for="ProjectLink" type="text" class="form-control" id="ProjectLink" name="ProjectLink" placeholder="Enter link">
+          </div>
+          <span class="text-danger" asp-validation-for="ProjectGitHub"></span>
+          <div class="form-group">
+            <label asp-for="ProjectGitHub">GitHub Link</label>
+            <input asp-for="ProjectGitHub" type="text" class="form-control" id="ProjectGitHub" name="ProjectGitHub" placeholder="Enter link">
+          </div>
+          <span class="text-danger" asp-validation-for="IsViewDone"></span>
+          <div class="form-goup">
+            <label asp-for="IsViewDone">Not Done &nbsp;</label>
+            <input asp-for="IsViewDone" type="radio" name="IsViewDone" value="false" checked="checked">
+            <label asp-for="IsViewDone">&nbsp;&nbsp; Done &nbsp;</label>
+            <input asp-for="IsViewDone" type="radio" name="IsViewDone" value="true">
+          </div>
+          <br>
+          <a class="btn btn-outline-secondary text-white mr-2" asp-controller="Admin" asp-action="Dashboard">Cancel</a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

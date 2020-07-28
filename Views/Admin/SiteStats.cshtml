@@ -1,0 +1,148 @@
+@{
+  ViewData["Title"] ="Site Stats".ToUpper();
+  User user = ViewBag.user;
+}
+
+<section class="section-edit-site mt-5">
+  <div class="container border shadow mb-5">
+  <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 p-2 border-right">
+        <partial name="Sidebar" model="@user"/>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3">
+        <a class="text-secondary float-right" asp-controller="Admin" asp-action="Dashboard">Back</a>
+        <h1 class="text-primary" >@ViewData["Title"]</h1>
+        <hr class="my-4 bg-white">
+        <div class="jumbotron jum-1">
+          <div class="row text-center">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <h5># Messages</h5>
+              <hr class="bg-secondary">
+              <p>@ViewBag.messages.Count</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <h5># Visitors</h5>
+              <hr class="bg-secondary">
+              <p>@ViewBag.visitors.Count</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+              <h5># Hackers</h5>
+              <hr class="bg-secondary">
+              <p>@ViewBag.hackers.Count</p>
+            </div>
+          </div>
+        </div>
+         <div class="jumbotron jum-2">
+          <h3>MESSAGE</h3>
+          <div class="border" style="height: 300px; overflow-y: scroll;">
+            <table class="table table-striped table-dark">
+              <thead class="text-info">
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th>Controller</th>
+                </tr>
+              </thead>
+              <tbody>
+                @{
+                  foreach(var message in ViewBag.messages)
+                  {
+                    <tr>
+                      <td>@message.EmailId</td>
+                      <td>@message.Name</td>
+                      <td>@message.Subject</td>
+                      <td>@message.CreatedAt.ToString("MM/dd/yyyy")</td>
+                      <td>
+                        <a class="text-decoration-none" asp-action="ViewEmailMessage" asp-controller="Admin" asp-route-id="@message.EmailId">View</a> | <a class="text-decoration-none" asp-action="DeleteEmailMessage" asp-controller="Admin" asp-route-id="@message.EmailId">Delete</a>
+                      </td>
+                    </tr>
+                  }
+                }
+              </tbody>
+            </table> 
+          </div>
+          @{
+            if(ViewBag.messages.Count > 0)
+            {
+              <a class="btn btn-primary mt-3" asp-controller="Admin" asp-action="DeleteAllMessages">Delete All</a>
+            }
+          }
+        </div>
+        <div class="jumbotron jum-2">
+          <h3>VISITOR</h3>
+          <div class="border" style="height: 300px; overflow-y: scroll;">
+            <table class="table table-striped table-dark">
+              <thead class="text-info">
+                <tr>
+                  <th>Ip</th>
+                  <th>Device</th>
+                  <th>Date</th>
+                  <th>Controller</th>
+                </tr>
+              </thead>
+              <tbody>
+                @{
+                  foreach(var visitor in ViewBag.visitors)
+                  {
+                    <tr>
+                      <td>@visitor.VisitorIp</td>
+                      <td>@visitor.VisitorDevice</td>
+                      <td>@visitor.CreatedAt.ToString("MM/dd/yyyy")</td>
+                      <td>
+                        <a class="text-decoration-none" asp-action="DeleteVisitor" asp-controller="Admin" asp-route-id="@visitor.VisitorId">Delete</a>
+                      </td>
+                    </tr>
+                  }
+                }
+              </tbody>
+            </table> 
+          </div>
+          @{
+            if(ViewBag.visitors.Count > 0)
+            {
+              <a class="btn btn-primary mt-3" asp-action="DeleteAllVisitors" asp-controller="Admin">Delete All</a> 
+            }
+          }
+        </div>
+        <div class="jumbotron jum-2">
+          <h3>HACKER</h3>
+          <div class="border" style="height: 300px; overflow-y: scroll;">
+            <table class="table table-striped table-dark">
+              <thead class="text-info">
+                <tr>
+                  <th>Ip</th>
+                  <th>Device</th>
+                  <th>Date</th>
+                  <th>Controller</th>
+                </tr>
+              </thead>
+              <tbody>
+                @{
+                  foreach(var hacker in ViewBag.hackers)
+                  {
+                    <tr>
+                      <td>@hacker.HackerIp</td>
+                      <td>@hacker.HackerDevice</td>
+                      <td>@hacker.CreatedAt.ToString("MM/dd/yyyy")</td>
+                      <td>
+                        <a class="text-decoration-none" asp-action="DeleteHacker" asp-controller="Admin" asp-route-id="@hacker.HackerId">Delete</a>
+                      </td>
+                    </tr>
+                  }
+                }
+              </tbody>
+            </table> 
+          </div>
+          @{
+            if(ViewBag.hackers.Count > 0)
+            {
+              <a class="btn btn-primary mt-3" asp-controller="Admin" asp-action="DeleteAllHackers">Delete All</a>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

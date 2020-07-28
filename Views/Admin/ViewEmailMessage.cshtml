@@ -1,0 +1,29 @@
+@{
+  ViewData["Title"] = "View Email Message".ToUpper();
+  User user = ViewBag.user;
+}
+
+<section class="section-edit-site mt-5">
+  <div class="container border shadow mb-5">
+  <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 p-2 border-right">
+        <partial name="Sidebar" model="@user"/>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3">
+        <a class="text-secondary float-right" asp-controller="Admin" asp-action="SiteStats">Back</a>
+        <h1 class="text-primary" >@ViewData["Title"]</h1>
+        <hr class="my-4 bg-white">
+        <div class="jumbotron jum-1">
+          <h3><span class="text-info">Subject</span>: @ViewBag.message.Subject</h3>
+          <hr class="bg-secondary">
+          <p><span class="text-info">Name</span>: @ViewBag.message.Name</p>
+          <p><span class="text-info">Email</span>: @ViewBag.message.FromEmail</p>
+          <p><span class="text-info">Phone</span>: @ViewBag.message.PhoneNumber</p>
+          <p><span class="text-info">Message</span>: @ViewBag.message.Message</p>
+          <p><span class="text-info">Date</span>: @ViewBag.message.CreatedAt.ToString("MM/dd/yyyy")</p>
+          <a class="btn btn-primary" asp-action="DeleteEmailMessage" asp-controller="Admin" asp-route-id="@ViewBag.message.EmailId">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

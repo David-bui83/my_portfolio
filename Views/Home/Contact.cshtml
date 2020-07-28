@@ -1,0 +1,147 @@
+@{
+    ViewData["Title"] = "Contact".ToUpper();
+}
+@model EmailMessage
+
+<partial name="Nav"/>
+
+<section class="contact-form mt-5" style="background-color: #2b3e50;">
+    <div class="container mt-4 mb-5">
+        <h1 class="display-4 text-primary text-center">CONTACT ME</h1>
+        <span class="mb-4" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+        <h5 class=" text-center mb-5">Send me a message from here.</h5>
+        <div class="validation-container text-center">
+            <span class=""></span>
+            <span class="name text-danger" asp-validation-for="Name"></span><br>
+            <span class="subject text-danger" asp-validation-for="Subject"></span><br>
+            <span class="email text-danger" asp-validation-for="FromEmail"></span><br>
+            <span class="message text-danger" asp-validation-for="Message"></span><br>
+            <span class="phone text-danger" asp-validation-for="PhoneNumber"></span>
+        </div>
+        <form id="contact-form" class="p-4 shadow border border-secondary">
+            <div class="form-row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 mb-3">
+                    <input asp-for="Name" type="text" class="form-control" id="Name" placeholder="Enter name">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 mb-3">
+                    <input asp-for="Subject" type="text" class="form-control" id="Subject" placeholder="Enter subject">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 mb-3">
+                    <input asp-for="FromEmail" type="email" class="form-control" id="FromEmail" placeholder="Enter email">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 p-2 mb-3">
+                    <input asp-for="PhoneNumber" type="text" class="form-control" id="PhoneNumber" placeholder="Enter phone number">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-2 mb-3">
+                    <textarea asp-for="Message" type="text" class="form-control" name="Message" id="Message" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="form-group row mt-4">
+                <div class="col text-center">
+                    <button id="contact-btn" class="btn btn-primary btn-lg" style="width: 100%">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Hello <span class="sender-name"></span>,</p>
+            <p>Your message has be received. I will reply asap.</p>
+            <p>thank-you</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="other-section-contact">
+    <div class="other-section-overlay"></div>
+    <div class="container mb-5">
+        <div class="row mt-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 mb-5">
+                <h1 class="display-4 text-center text-primary mt-3" >ALTS</h1>
+                <span class="mb-2" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+            </div>
+        </div>
+        <div class="row" style="overflow: hidden;">
+            <div class="col-lg-6 col-md-6 col-sm-6 p-2 contact-method-info " data-aos="fade-right">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="text-info"><h5>METHODS</h5></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-muted">
+                        <tr>
+                            <td><i class="fas fa-envelope-square"></i></td>
+                            <td><span class="contact-info"> david.t.bui83&commat;gmail.com</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fas fa-phone-square"></i></td>
+                            <td><span id="text" class="contact-info text-muted">657-200-8596</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fab fa-linkedin"></i></td>
+                            <td><span class="contact-info"><a class="text-muted" href="https://www.linkedin.com/in/david-bui-628b1641/" target="blank">linkedin.com/in/davidbui</a></span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="fab fa-github-square"></i></td>
+                            <td><span class="contact-info"><a class="text-muted" href="https://github.com/David-bui83" target="blank">github.com/davidbui</a> </span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 contact-image-container" data-aos="fade-up">
+                <div style="width: 100%; height: 100%">
+                    <img class="contact-image" style="width: 100%; height: 100%;" src="/Images/phone.jpg" alt="phone" style="display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="footer"/>
+
+
+<script src="~/js/contact.js" asp-append-version="true"></script>
+
+
+@* <section class="google-map-section bg-light">
+    <div class="container bg-light map-container">
+        <div class="position-relative" style="width: 100%; height: 460px;">
+            <div id="map" class="map" style="position: absolute; top: 0; right: 0; bottom: 0; left:0; width: 100%; height:100%;" ></div>
+        </div>
+    </div>
+</section> *@
+
+@* <script>
+    var map;
+    function initMap() {
+        var options = {
+            center: {lat: 33.752083, lng: -117.998417},
+            zoom: 10,
+        }
+        map = new google.maps.Map(document.getElementById('map'),options);
+        
+        var marker = new google.maps.Marker({
+            position: {lat: 33.752083, lng: -117.998417},
+            map: map,
+            title: "Westminster, CA"
+        });
+    }
+</script> *@
+@* <script async defer src="https://maps.googleapis.com/maps/api/js?key=@ViewBag.googleApiKey&callback=initMap"></script> *@
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0lug9fVesT9EFfKI1gUhmcYOd0lHCVSk&callback=initMap"></script> -->

@@ -1,0 +1,64 @@
+<header id="title-div" style="width: 100vw; height: 100vh; position: relative;">
+    <nav class="nav-tran navbar navbar-expand-sm navbar-toggleable-sm navbar-dark fixed-top;" style="z-index: 999;">
+        <div class="container">
+            <a class="navbar-brand nav-icon" asp-controller="Home" asp-action="Index">DAVID BUI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="nav navbar-nav flex-grow-1">
+                    <li class="nav-item dis">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">HOME</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Home" asp-action="About">ABOUT</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Home" asp-action="Project">PROJECTS</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item ml-auto" id="login">
+                        <a class="nav-link" asp-controller="Admin" asp-action="Index">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="main-title-container p-3" style="width: 70%; position: absolute; transform: translate(-50%, -50%); left: 50%; top: 50%; z-index: 1;">
+        <div class="text-center p-3" style="height: 100%;">
+            <h1 class="index-title-type text-primary display-4 mt-5"><span class="txt-type" data-wait="3000"></span><span class="cursor typing">&nbsp;</span></h1>
+        </div>
+    </div>
+
+    <nav class="nav-tran-2 navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark fixed-top shadow" style=" display: none;">
+        <div class="container">
+            <a class="navbar-brand nav-icon-2" asp-controller="Home" asp-action="Index">DAVID BUI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="nav navbar-nav flex-grow-1" style="opacity: 1">
+                    <li class="nav-item dis">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">HOME</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Home" asp-action="About">ABOUT</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Home" asp-action="Project">PROJECTS</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item " id="login-2">
+                        <a class="nav-link" asp-controller="Admin" asp-action="Index">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="overlay"></div>
+</header>

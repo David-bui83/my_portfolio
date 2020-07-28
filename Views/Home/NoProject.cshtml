@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "No Project".ToUpper();
+}
+<partial name="Nav"/>
+
+<section class="section-privacy mt-5">
+    <div class="container mt-4">
+        <h1 class="display-4 text-primary text-center">@ViewData["Title"]</h1>
+        <span class="mb-5" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+        <p class="text-center">Project does not exist. Please go back and look at other projects.</p>
+        <div class="text-center mt-3">
+            <a class="btn btn-primary" asp-controller="Home" asp-action="Project"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+        </div>
+    </div>
+</section>
+
+<partial name="footer"/>

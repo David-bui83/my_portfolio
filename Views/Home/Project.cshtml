@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Projects".ToUpper();
+    List<Project> projects = ViewBag.projects;
+}
+
+<partial name="Nav"/>
+
+<section class="section-project-title mt-5">
+    <div class="container mt-4">
+        <h1 class="display-4 text-primary text-center">PROJECTS</h1>
+        <span class="mb-3" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+    </div>
+</section>
+
+<section class="section-project-cards ">
+    <div class="container">
+        <div class="row">
+            @{
+                foreach(var project in projects)
+                {
+                    if(project.IsDone == true)
+                    {
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" data-aos="fade-in" data-aos-easing="ease-in-back">
+                            <a class="project-view-link" asp-action="ViewProject" asp-controller="Home" asp-route-id="@project.ProjectId">
+                                <div class="card mb-4 project-project-card">
+                                    <img style="width:100%; height:100%; border-bottom: 1px solid #df691a;" src="~/@project.ProjectImage" class="card-img-top" alt="@project.ProjectName">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@project.ProjectName</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" data-aos="fade-in" data-aos-easing="ease-in-back">
+                            <div class="card mb-4 project-project-card">
+                                <img style="width:100%; height:100%; border-bottom: 1px solid #df691a;" src="~/Images/under_construction.jpg" class="card-img-top" alt="under construction">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">@project.ProjectName</h5>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</section>
+<partial name="footer"/>
+

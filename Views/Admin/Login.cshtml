@@ -1,0 +1,19 @@
+@model LogIn
+<div class="container border p-3 text-muted">
+  <h3 class="text-primary">Log In</h3>
+  <hr class="my-4 bg-primary">
+  <div style="width: 100%;">
+    <form asp-controller="Admin" asp-action="LogIn" method="POST">
+      <span class="text-danger" asp-validation-for="LoginUserName"></span>
+      <div class="form-group">
+        <label for="LoginUserName">User Name</label>
+        <input type="text" class="form-control" id="LoginUserName" name="LoginUserName" placeholder="Enter user name">
+      </div>
+      <div class="form-group">
+        <label for="LoginPassword">Password</label>
+        <input type="password" class="form-control" id="LoginPassword" name="LoginPassword" placeholder="Enter password">
+      </div>
+      <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+  </div>
+</div>

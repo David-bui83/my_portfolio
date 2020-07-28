@@ -1,0 +1,289 @@
+﻿@{
+    ViewData["Title"] = "About".ToUpper();
+}
+
+<partial name="Nav"/>
+
+<section class="about-sectioni-intro mt-5" style="background-color: #2b3e50;">
+    <div class="container mt-4 mb-4">
+        <h1 class="display-4 text-primary text-center">@ViewData["Title"]</h1>
+        <span class="mb-5" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+        <div class="card mb-2 shadow">
+            <div class="row no-gutters" style="overflow: hidden">
+                <div class="col-md-4" style="border: 2px solid #abb6c2; padding: 5px;" data-aos="fade-down">
+                @{
+                    if(ViewBag.user != null)
+                    {
+                        <img src="~/@ViewBag.user.UserImage" class="card-img" alt="davidbui" style="height: 100%">
+                    }
+                    else
+                    {
+                        <img src="~/Images/davidbui.jpg" class="card-img" alt="davidbui" style="height: 100%">
+                    }
+                }
+                </div>
+                <div class="col-md-8" data-aos="fade-left">
+                    <div class="card-body">
+                        @{
+                            if(ViewBag.user != null)
+                            {
+                                <h5 class="text-primary">Introduction</h5>
+                                <hr class="bg-primary">
+                                <div class="about-paragraph-div">
+                                    <p style="font-size: 18px;">@ViewBag.user.Info</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <h5 class="text-primary">Introduction</h5>
+                                <hr class="bg-primary">
+                                <div class="about-paragraph-div">
+                                    <p style="font-size: 18px;">Hello, my name is <span class="font-weight-bold text-primary">David Bui</span>. I am a proud US Army veteran. During my 6-year service enlistment, I managed the Nuclear, Biological, and Chemical Defense (NBC) section. However, in addition to this, I was also in charged of the armory, and supply/logistics sections. Aside from managing roles, I was also in leadership roles where I conducted team building and training exercises. My military experiences had helped me developed my resourcefulness, adaptability, and aptitude in a fast-paced environment. After my service, I worked as an IT Support Specialist where I honed my technical, trouble-shooting, and problem-solving skills. I am a graduate of California State University, Long Beach with a Bachelor of Science in MIS (Management of Information Systems) where I learned SQL Database, Business Application Development, and Internet Application Development, which helped me realized my passion for full-stack development. I attended Coding Dojo where I learned full-stack development in three different stacks: <span class="text-primary">Python/Django</span>, <span class="text-primary">MEAN</span>, <span class="text-primary">ASP.Net Core</span>. I am quick-learner, hard-worker, creative-thinker, problem-solver, and a team-player. Contact me to learn more...</p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
+</section>
+
+<section class="about-section-skills">
+    <div class="skills-section-overlay"></div>
+    <div class="container">
+        <div class="row" >
+            <div class="col">
+                <h1 class="display-4 text-primary text-center">SKILLS</h1>
+                <span class="mb-4" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+                <div id="skillsCarousel" class="carousel slide mb-5" data-ride="carousel" data-aos="slide-up">
+                    <ol class="carousel-indicators">
+                        <li data-target="#skillsCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#skillsCarousel" data-slide-to="1"></li>
+                        <li data-target="#skillsCarousel" data-slide-to="2"></li>
+                        <li data-target="#skillsCarousel" data-slide-to="3"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="text-center mb-5" sytle="height: 200px;">
+                                <h3 class="text-info">Languages</h3>
+                                <p>Front-end: <span class="text-warning">HTML5</span>, <span class="text-warning">CSS</span>, <span class="text-warning">JavaScript</span>.</p>
+                                <p>Back-end: <span class="text-warning">C#</span>, <span class="text-warning">Python</span>, <span class="text-warning">JavaScript</span>.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                        <div class="text-center mb-5" sytle="height: 200px">
+                                <h3 class="text-info">Frameworks</h3>
+                                <p>Front-end:  <span class="text-warning">BootStrap</span>, <span class="text-warning">JQuery</span>, <span class="text-warning">Angular</span>.</p>
+                                <p>Back-end: <span class="text-warning">Django</span>, <span class="text-warning">ASP.NET Core</span>, <span class="text-warning">Node.js</span>.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center mb-5" sytle="height: 200px;">
+                                <h3 class="text-info">Databases</h3>
+                                <p>NoSQL: <span class="text-warning">MongoDB</span></p>
+                                <p>SQL: <span class="text-warning">SQLite</span>, <span class="text-warning">MySQL</span>, <span class="text-warning">Oracle</span>.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="text-center mb-5" sytle="height: 200px;">
+                                <h3 class="text-info">Dev Toops</h3>
+                                <p>Editor:  <span class="text-warning">VSCode</span>, <span class="text-warning">Atom</span>, <span class="text-warning">Brackets</span>.</p>
+                                <p>Other: <span class="text-warning">Postman</span>, <span class="text-warning">GitHub</span>, <span class="text-warning">AWS</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-2" type="button" data-toggle="modal" data-target=".resume-modal">View Resume</button>
+                        <div class="modal fade resume-modal" tabindex="-1" role="dialog" aria-labelledby="resumeModal" aria-hidden="true">
+                            <div class="modal-dialog modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="text-primary">Full Stack Developer</h1>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <partial name="ResumeModal"/>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary mr-auto" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @{
+                        if(ViewBag.user != null)
+                        {
+                            <a class="btn btn-outline-info" href="~/@(ViewBag.user == null ? String.Empty : ViewBag.user.UserResume)" download="@ViewBag.user.FirstName-@ViewBag.user.LastName-Resume">Download Resume</a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div style="margin-bottom: 30px;">
+        </div>
+    </div>
+</section>
+
+<section class="education-section" style="background-color: #2b3e50;">
+    <div class="container mt-3" style="overflow: hidden;">
+        <h1 class="display-4 text-primary text-center">EDUCATION</h1>
+        <span class="mb-4" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+        <table class="table table-striped shadow mb-5 mt-5" data-aos="fade-left">
+            <thead>
+                <tr class="text-info">
+                    <th><h3>School</h3></th>
+                    <th><h3>Degree</h3></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Coding Dojo</th>
+                    <td>Certificate of Achievement in Full Stack Development</td>
+                </tr>
+                <tr>
+                    <th>California State University, Long Beach</th>
+                    <td>Bachelor of Science in Management of Information Systems</td>
+                </tr>
+                <tr>
+                    <th>Orange Coast College</th>
+                    <td>
+                        <p>Associate of Science in Engineering</p>
+                        <p>Associate of Science in Computer Information Systems</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Golden West College</th>
+                    <td>
+                        <p>Associate of Science and Transfer in Business Administration</p>
+                        <p>Associate of Arts in Business and Technology</p>
+                        <p>Associate of Arts in Liberal Arts and Humanities</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="about-section-awards bg-dark">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4 text-primary text-center">AWARDS</h1>
+                <span class="mb-4" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+                <div class="text-center mt-5" data-aos="fade-up">
+                    <ul style="list-style: none;">
+                        <li>Dean's List for Academic Honors</li>
+                        <li>Dean's List for Academic Honors</li>
+                        <li>Certificate for Academic Honors</li>
+                        <li>Certificate for Academic Honors</li>
+                        <li>Certificate for Academic Honors</li>
+                        <li>US Army's Good Conduct Medal</li>
+                        <li>US Army's Army Achievement Medal</li>
+                        <li>UA Army's Army Achievement Medal</li>
+                        <li>US Army's Army Achiemvent Medal</li>
+                        <li>US Army's Certificate of Achievement</li>
+                        <li>Certificate of Achievement, Pacific Warrior</li>
+                        <li>Certificate of Achievement, Global Medic</li>
+                        <li>Certificate of Achievement, Roving Sands</li>
+                    </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-section-goals bg-dark" >
+    <div class="container">
+        <h1 class="display-4 text-primary text-center">GOALS</h1>
+        <span class="mb-5" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+        <div class="row mb-4">
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
+                <div class="card card-goals shadow-lg" data-aos="flip-left" data-aos-duration="1000">
+                    <h5 class="card-header text-info shadow">Current</h5>
+                    <div class="card-body bg-white">
+                        <ul class="text-dark">
+                            <li><span class="text-primary">&rarr;</span> React</li>
+                            <li><span class="text-primary">&rarr;</span> MEAN</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
+                <div class="card card-goals shadow" data-aos="flip-left" data-aos-duration="2000">
+                    <h5 class="card-header text-info">Near Future</h5>
+                    <div class="card-body bg-white">
+                        <ul class="text-dark">
+                            <li><span class="text-primary">&rarr;</span> Ruby</li>
+                            <li><span class="text-primary">&rarr;</span> Ruby on Rails</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-3">
+                <div class="card card-goals shadow" data-aos="flip-left" data-aos-duration="3000">
+                    <h5 class="card-header text-info">Distance Future</h5>
+                    <div class="card-body bg-white">
+                        <ul class="text-dark">
+                            <li><span class="text-primary">&rarr;</span> Swift</li>
+                            <li><span class="text-primary">&rarr;</span> Mobile Dev</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-section-interest">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4 text-primary text-center">INTERESTS</h1>
+                <span class="mb-5" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                <div class="card card-interests shadow" data-aos="flip-right" data-aos-duration="1000">
+                    <h5 class="card-header text-info">Games</h5>
+                    <div class="card-body bg-light">
+                        <ul class="text-dark">
+                            <li><span class="text-primary">&loz;</span> Street Fighters</li>
+                            <li><span class="text-primary">&loz;</span> The Watcher III</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                <div class="card card-interests shadow" data-aos="flip-right" data-aos-duration="2000">
+                    <h5 class="card-header text-info">Movies</h5>
+                    <div class="card-body bg-light">
+                        <ul class="text-dark">
+                            <li><span class="text-primary">&loz;</span> John Wick</li>
+                            <li><span class="text-primary">&loz;</span> Marvel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                <div class="card card-interests shadow" data-aos="flip-right" data-aos-duration="3000">
+                    <h5 class="card-header text-info">Others</h5>
+                    <div class="card-body bg-light">
+                        <ul class="text-dark">
+                            <li><span class="text-primary">&loz;</span> Ping pong</li>
+                            <li><span class="text-primary">&loz;</span> Raspberry Pi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<partial name="footer"/>
+

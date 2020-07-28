@@ -1,0 +1,153 @@
+﻿@{
+    ViewData["Title"] = "Main".ToUpper();
+}
+
+<partial name="IndexNav" />
+<partial name="_CookieConsentPartial" />
+
+<section class="index-section-me" style="background-color: #2b3e50;">
+    <div class="container">
+        <h1 class="mb-1 text-primary text-center display-4">WHO I AM</h1>
+        <span class="mb-3" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+        <div class="row">
+            <div class="col">
+                <article class="mb-4 intro-article p-2">
+                    <div class="row p-3">
+                        <div class="col-lg-4 col-md-4 col-sm-12" style="width: 100%; height: 100%; border-radius: 50%;" >
+                            <div class="intro-image-container">
+                                @{
+                                    if(ViewBag.user != null)
+                                    {
+                                        <img class="circle-image" src="~/@ViewBag.User.UserImage" alt="@ViewBag.user.FirstName">
+                                    }
+                                    else
+                                    {
+                                        <img class="circle-image" src="~/Images/davidbui.jpg" alt="david">
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-12 intro-paragraph-container" data-aos="fade-left">
+                            <p class="text-white intro-paragraph">Hello, my name is David Bui. I am a full stack developer with experience in mulitiple stacks: Python/Django, JavaScript/MEAN, and C#/ASP.NET Core...</p>
+                            <div class="intro-button-container">
+                                <a class="btn btn-primary mr-2" asp-controller="Home" asp-action="About">Learn More</a>
+                                <a class="btn btn-outline-info contact-me-button" href="#contact-me">Contact Me</a>
+                            </div>
+                        </div>
+                    </div>
+                </article> 
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="index-section-projects bg-dark" style="overflow: hidden;">
+    <div class="container mb-3 p-3">
+    <h1 class="text-primary text-center display-4">PROJECTS</h1>
+    <span class="mb-5" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+        <div class="row mt-3 text-center">
+        @{
+                foreach(var item in ViewBag.projectList)
+                {
+                    if(item.ProjectId%2==0)
+                    {
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 project-card">
+                            <article class="project-article" data-aos="fade-down">
+                                <a class="project-image-main project-view-link" asp-controller="Home" asp-action="ViewProject" asp-route-id="@(item == null ? String.Empty : item.ProjectId)">
+                                    <div class="card mb-3 index-project-card">
+                                        <div class="card-body" style="background-color: #2b3e50; border-bottom: 1px solid #df691a;">
+                                            <h5>@item.ProjectName</h5>
+                                        </div>
+                                        <div class="project-image-container">
+                                            <img src="~/@item.ProjectImage" alt="@item.ProjectName" style="width: 100%; height: auto; display: block;">
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                        </div> 
+                    }
+                    else
+                    {
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 project-card">
+                            <article class="project-article" data-aos="fade-up">
+                                <a class="project-image-main project-view-link" asp-controller="Home" asp-action="ViewProject" asp-route-id="@item.ProjectId">
+                                    <div class="card mb-3 index-project-card">
+                                        <div class="card-body" style="background-color: #2b3e50; border-bottom: 1px solid #df691a;">
+                                            <h5>@item.ProjectName</h5>
+                                        </div>
+                                        <div class="project-image-container">
+                                            <img src="~/@item.ProjectImage" alt="@item.ProjectName" style="width: 100%; height: auto; display: block;">
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                        </div> 
+                    }
+                }  
+            }
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <p class="mt-3 text-white">Click the button to view more projects.</p>
+                <a class="btn btn-primary text-white" asp-controller="Home" asp-action="Project">View More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="index-section-contact" id="contact-me" style="overflow: hidden; background-color: #2b3e50;">
+    <div class="container p-3 mb-3">
+        <h1 class="display-4 text-center text-primary">GET IN TOUCH</h1>
+        <span class="mb-5" style="margin: auto; width: 20%; border: 2px solid #abb6c2; display: block;"></span>
+        <div class="container p-3" data-aos="fade-in">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 contact-method text-center">
+                    <article class="contact-email">
+                        <div>
+                            <i class="fas fa-envelope fa-3x text-info mb-2"></i>
+                        </div>
+                        <header>
+                            <h5 class="text-white">Email</h5>
+                            <p class="text-info">david.t.bui83@gmail.com</p>
+                        </header>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 contact-method text-center">
+                    <article class="contact-phone">
+                        <div>
+                            <i class="fas fa-phone fa-3x text-info mb-2"></i>
+                        </div>
+                        <header>
+                            <h5 class="text-white">Text</h5>
+                            <p class="text-info">657-299-8596</p>
+                        </header>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 contact-method text-center">
+                    <article>
+                        <div>
+                            <i class="fab fa-linkedin-in fa-3x text-info mb-2"></i>
+                        </div>
+                        <head>
+                            <h5 class="text-white">LinkedIn</h5>
+                            <p class="text-info">https://www.linkedin.com/</p>
+                        </head>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <a class="btn btn-primary" asp-controller="Home" asp-action="Contact">Contact Me</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<partial name="footer"/>
+
+
+<script src="~/js/typewriter.js" asp-append-version="true"></script>
+<script src="~/js/unsplash.js" asp-append-version="true"></script>
+<script src="~/js/visitor.js" asp-append-version="true"></script>

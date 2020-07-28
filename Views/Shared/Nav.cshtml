@@ -1,0 +1,29 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark fixed-top bg-dark shadow" style="z-index: 999;">
+        <div class="container ml-auto">
+            <a class="navbar-brand nav-icon" asp-controller="Home" asp-action="Index">DAVID BUI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="nav navbar-nav flex-grow-1">
+                    <li class="nav-item dis">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="About">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Project">PROJECTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item ml-auto" id="login">
+                        <a class="nav-link" asp-controller="Admin" asp-action="Index">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

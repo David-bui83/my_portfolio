@@ -1,0 +1,35 @@
+@{
+  ViewData["Title"] ="Edit Technology".ToUpper();
+  User user = ViewBag.user;
+  Technology tech = ViewBag.tech;
+}
+
+<section class="section-edit-tech mt-5">
+  <div class="container border shadow mb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 p-2 border-right">
+        <partial name="Sidebar" model="@user"/>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3">
+        <a class="text-secondary float-right" asp-controller="Admin" asp-action="Dashboard">Back</a>
+        <h1 class="text-primary" >@ViewData["Title"] - @tech.TechnologyId</h1>
+        <hr class="my-4 bg-white">
+        @model TechViewModel
+        <form enctype="multipart/form-data" class="p-3 border border-secondary text-muted" asp-controller="Admin" asp-action="UpdateTechnology" asp-route-id="@tech.TechnologyId" method="POST">
+        <span class="text-danger" asp-validation-for="TechnologyName"></span>
+          <div class="form-group">
+            <label asp-for="TechnologyName">Technology Name</label>
+            <input asp-for="TechnologyName" type="text" class="form-control" id="TechnologyName" name="TechnologyName" placeholder="Enter technology name" value="@tech.TechnologyName">
+          </div>
+          <span class="text-danger" asp-validation-for="TechnologyImage"></span>
+          <div class="form-group">
+            <label asp-for="TechnologyImage">Technology Image</label>
+            <input asp-for="TechnologyImage" type="file" class="form-control" id="TechnologyImage" name="TechnologyImage" value="@tech.TechnologyImage">
+          </div>
+          <a asp-controller="Admin" asp-action="Dashboard" class="btn btn-outline-secondary text-white mr-2">Cancel</a>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,83 @@
+@{
+  ViewData["Title"] = "View Detail".ToUpper();
+  User userDetail = ViewBag.userDetail;
+  var pro = ViewBag.projectDetail;
+}
+
+<section class="section-view-detail" >
+  <div class="container border shadow mb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 border-right">
+        <partial name="Sidebar" model="@userDetail"/>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3">
+        <a class="text-secondary float-right" asp-controller="Admin" asp-action="AddDetail" asp-route-id="@pro.ProjectId">Back</a>
+        <h1 class="text-primary">@ViewData["Title"]</h1>
+        <hr class="my-4 bg-white">
+        <div class="jumbotron">
+          <h1 class="text-light">@(pro == null ? String.Empty : pro.ProjectName)</h1>
+          <div class="card mb-3 bg-light" >
+            <div class="row no-gutters">
+              <div class="col-md-4 p-3">
+                  <img src="~/@(pro == null ? String.Empty : pro.ProjectImage)" class="card-img" alt="@(pro == null ? String.Empty: pro.ProjectName)" style="display: block;">
+              </div>
+              <div class="col-md-8">
+                  <div class="card-body">
+                      <table class="table table-dark">
+                          <thead>
+                              <tr>
+                                  <th colspan="2">Project Information</th>
+                              </tr>
+                          </thead>
+                          <tbody >
+                              <tr>
+                                  <th class="text-white-50" scope="row">Description</th>
+                                  <td  class="text-muted">@(pro == null ? String.Empty : pro.ProjectDescription)</td>
+                              </tr>
+                              <tr>
+                                  <th class="text-white-50" scope="row">Project Link</th>
+                                  <td  class="text-muted"><a href="@(pro == null ? String.Empty : pro.ProjectLink)">@(pro == null ? String.Empty : pro.ProjectName) Link</a></td>
+                              </tr>
+                              <tr>
+                                <th class="text-white-50">Technologies</th>
+                                <td>
+                                  @{
+                                    foreach(var tech in ViewBag.tech)
+                                    {
+                                      <div style="width: 15px; height: 15px; display: inline-block; margin: 0px 2px;">
+                                        <img src="~/@tech.TechnologyImage" alt="@tech.TechnologyName" style="width: 100%;">
+                                      </div>
+                                    }
+                                  }
+                                </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="jumbotron">
+          <h4 class="text-light">Detail</h4>
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>@ViewBag.detail.DetailName</td>
+                <td>@ViewBag.detail.DetailDetail</td>
+              </tr>
+            </tbody>
+          </table>
+          <a class="ml-2 mr-2 text-primary" asp-controller="Admin" asp-action="EditDetail" asp-route-id="@ViewBag.detail.DetailId">Edit</a> | <a class="ml-2 mr-2 text-primary" asp-controller="Admin" asp-action="DeleteDetail" asp-route-id="@ViewBag.detail.DetailId">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

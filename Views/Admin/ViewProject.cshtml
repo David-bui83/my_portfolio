@@ -1,0 +1,110 @@
+@{
+  ViewData["Title"] = "View Project".ToUpper();
+  User user = ViewBag.user;
+  var project = ViewBag.project;
+}
+
+<section class="section-view-project mt-5">
+  <div class="container border shadow mb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 border-right">
+        <partial name="Sidebar" model="@user"/>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3">
+        <a class="text-secondary float-right" asp-controller="Admin" asp-action="Dashboard">Back</a>
+        <h1 class="text-primary">@ViewData["Title"]</h1>
+        <hr class="my-4 bg-white">
+        <div class="jumbotron bg-dark">
+          <h1 class="text-muted">@(project == null ? String.Empty : project.ProjectName)</h1>
+          <div class="card bg-light mb-3">
+            <div class="row no-gutters">
+              <div class="col-md-4 p-3">
+                  <img src="~/@(project == null ? String.Empty : project.ProjectImage)" class="card-img" alt="@(project == null ? String.Empty: project.ProjectName)" style="display: block;">
+              </div>
+              <div class="col-md-8">
+                  <div class="card-body">
+                      <table class="table table-striped table-dark">
+                          <thead>
+                              <tr>
+                                  <th colspan="2">Project Information</th>
+                              </tr>
+                          </thead>
+                          <tbody >
+                              <tr>
+                                  <th class="text-white-50" scope="row">Description</th>
+                                  <td  class="text-muted">@(project == null ? String.Empty : project.ProjectDescription)</td>
+                              </tr>
+                              <tr>
+                                  <th class="text-white-50" scope="row">GitHub</th>
+                                  <td  class="text-muted"><a href="@(project == null ? String.Empty : project.ProjectLink)" target="blank">@(project == null ? String.Empty : project.ProjectName) Link</a></td>
+                              </tr>
+                              <tr>
+                                <th class="text-white-50">Technologies</th>
+                                <td>
+                                  @{
+                                    foreach(var tech in ViewBag.tech)
+                                    {
+                                      <div style="width: 15px; height: 15px; display: inline-block; margin: 0px 2px;">
+                                        <img src="~/@tech.TechnologyImage" alt="@tech.TechnologyName" style="width: 100%;">
+                                      </div>
+                                    }
+                                  }
+                                </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <h4 class="text-muted">Add</h4>
+              <hr class="my-4 bg-light">
+              @model TechIdModel
+              <form asp-controller="Admin" asp-action="AddTechnology" asp-route-id="@(project == null ? 0 : project.ProjectId)" class="border border-light p-2" method="POST">
+                <span class="text-danger" asp-validation-for="AddTechId"></span>
+                <div class="form-group">
+                  <label class="text-muted" asp-for="AddTechId">Select Technology</label>
+                  <select asp-for="AddTechId" class="text-info form-control" name="AddTechId" id="AddTechId">
+                    @{
+                      foreach(var tech in ViewBag.notTech)
+                      {
+                        <option value="@tech.TechnologyId">@tech.TechnologyName</option>
+                      }
+                    }
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+              </form>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <h4 class="text-muted">Remove</h4>
+              <hr class="my-4 bg-light">
+              @if(ViewBag.count > 0)
+              {
+                <form asp-contoller="Admin" asp-action="RemoveTechnology" asp-route-id="@(project == null ? 0 : project.ProjectId)" class="border border-light p-2" method="Post">
+                  <span class="text-danger" asp-validation-for="RemoveTechId"></span>
+                  <div class="form-group">
+                    <label class="text-muted" asp-for="RemoveTechId">Select Technology</label>
+                    <select asp-for="RemoveTechId" name="RemoveTechId" id="RemoveTechId" class="text-info form-control">
+                      @{
+                        foreach(var tech in ViewBag.tech)
+                        {
+                          <option value="@tech.TechnologyId">@tech.TechnologyName</option>
+                        }
+                      }
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Remove</button>
+                </form>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

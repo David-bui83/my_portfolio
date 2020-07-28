@@ -1,0 +1,82 @@
+@{
+  ViewData["Title"] = "Edit Detail".ToUpper();
+  User user = ViewBag.user;
+  var project = ViewBag.project;
+}
+
+<section class="section-edit-detail mt-5">
+  <div class="container border shadow mb-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12 border-right">
+        <partial name="Sidebar" model="@user"/>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 p-3">
+        <a class="text-secondary float-right" asp-controller="Admin" asp-action="AddDetail" asp-route-id="@project.ProjectId">Back</a>
+        <h1 class="text-primary">@ViewData["Title"]</h1>
+        <hr class="my-4 bg-white">
+        <div class="jumbotron">
+          <h1>@(project == null ? String.Empty : project.ProjectName)</h1>
+          <div class="card mb-3 bg-light">
+            <div class="row no-gutters">
+              <div class="col-md-4 p-3">
+                  <img src="~/@(project == null ? String.Empty : project.ProjectImage)" class="card-img" alt="@(project == null ? String.Empty: project.ProjectName)" style="display: block;">
+              </div>
+              <div class="col-md-8">
+                  <div class="card-body">
+                      <table class="table table-dark">
+                          <thead>
+                              <tr>
+                                  <th colspan="2">Project Information</th>
+                              </tr>
+                          </thead>
+                          <tbody >
+                              <tr>
+                                  <th class="text-white-50" scope="row">Description</th>
+                                  <td  class="text-muted">@(project == null ? String.Empty : project.ProjectDescription)</td>
+                              </tr>
+                              <tr>
+                                  <th class="text-white-50" scope="row">GitHub</th>
+                                  <td  class="text-muted"><a href="@(project == null ? String.Empty : project.ProjectLink)">@(project == null ? String.Empty : project.ProjectName) Link</a></td>
+                              </tr>
+                              <tr>
+                                <th class="text-white-50">Technologies</th>
+                                <td>
+                                  @{
+                                    foreach(var tech in ViewBag.tech)
+                                    {
+                                      <div style="width: 15px; height: 15px; display: inline-block; margin: 0px 2px;">
+                                        <img src="~/@tech.TechnologyImage" alt="@tech.TechnologyName" style="width: 100%;">
+                                      </div>
+                                    }
+                                  }
+                                </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @model Detail
+        <div class="jumbotron">
+          <h4 class="text-light">Edit Detail</h4>
+          <form asp-controller="Admin" asp-action="UpdateDetail" asp-route-id="@ViewBag.detail.DetailId" method="PUT" class="p-3 border border-muted rounded">
+            <span class="text-danger" asp-validation-for="DetailName"></span>
+            <div class="form-group">
+              <label asp-for="DetailName" class="text-muted">Name</label>
+              <input aps-for="DetailName" type="text" class="form-control" id="DetailName" name="DetailName" value="@ViewBag.detail.DetailName">
+            </div>
+            <span class="text-danger" asp-validation-for="DetailDetail"></span>
+            <div class="form-group">
+              <label asp-for="DetailDetail" class="text-muted">Datail</label>
+              <textarea type="text" id="DetailDetail" name="DetailDetail" class="form-control">@ViewBag.detail.DetailDetail</textarea>
+            </div>
+            <a class="btn btn-outline-light text-white" asp-controller="Admin" asp-action="Dashboard">Cancel</a>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
